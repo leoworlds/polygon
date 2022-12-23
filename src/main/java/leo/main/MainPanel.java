@@ -5,13 +5,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static leo.main.Perspective.convert;
-
 public class MainPanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics gg) {
         Graphics2D g = (Graphics2D)gg;
+
+        Screen.setSize(getWidth(), getHeight());
 
         g.setBackground(Color.decode("#2b2b2b"));
         g.clearRect(0, 0, getWidth(), getHeight());
@@ -37,18 +37,13 @@ public class MainPanel extends JPanel {
 
         g.setColor(polygon.getColor());
 
-        List<Point> points = polygon.getPoints();
+        List<Point> points = Screen.convert(Perspective.convert(polygon)).getPoints();
 
         for (int i = 0; i < points.size(); i++) {
-            Point p1 = points.get(i);
-            Point p2 = (i + 1) >= points.size() ? points.get(0) : points.get(i + 1);
+            Point e1 = points.get(i);
+            Point e2 = (i + 1) >= points.size() ? points.get(0) : points.get(i + 1);
 
-            Point e1 = convert(p1);
-            Point e2 = convert(p2);
-
-            g.drawLine(
-                    (e1.getX() + getWidth())/2,(e1.getY() + getHeight())/2,
-                    (e2.getX() + getWidth())/2, (e2.getY() + getHeight())/2);
+            g.drawLine(e1.getX(), e1.getY(), e2.getX(), e2.getY());
         }
     }
 }

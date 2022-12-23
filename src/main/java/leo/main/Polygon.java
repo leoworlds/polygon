@@ -15,4 +15,9 @@ public class Polygon {
         this.color = color;
         this.points = Arrays.asList(points);
     }
+
+    public Polygon(Color color, List<Point> points) {
+        this.color = color;
+        this.points = points;
+    }
 }
