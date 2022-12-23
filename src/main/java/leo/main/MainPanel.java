@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static leo.main.Perspective.persp;
+import static leo.main.Perspective.convert;
 
 public class MainPanel extends JPanel {
 
@@ -43,14 +43,12 @@ public class MainPanel extends JPanel {
             Point p1 = points.get(i);
             Point p2 = (i + 1) >= points.size() ? points.get(0) : points.get(i + 1);
 
-            int x1 = persp(p1.getX(), p1.getZ());
-            int y1 = persp(p1.getY(), p1.getZ());
-            int x2 = persp(p2.getX(), p2.getZ());
-            int y2 = persp(p2.getY(), p2.getZ());
+            Point e1 = convert(p1);
+            Point e2 = convert(p2);
 
             g.drawLine(
-                    (x1 + getWidth())/2,(y1 + getHeight())/2,
-                    (x2 + getWidth())/2, (y2 + getHeight())/2);
+                    (e1.getX() + getWidth())/2,(e1.getY() + getHeight())/2,
+                    (e2.getX() + getWidth())/2, (e2.getY() + getHeight())/2);
         }
     }
 }
