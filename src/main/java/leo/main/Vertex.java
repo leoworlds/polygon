@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Point {
+public class Vertex {
     private int x;
     private int y;
     private int z;

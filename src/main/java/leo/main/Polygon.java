@@ -9,15 +9,15 @@ import java.util.List;
 @Data
 public class Polygon {
     private Color color;
-    private List<Point> points;
+    private List<Vertex> vertices;
 
-    public Polygon(Color color, Point... points) {
+    public Polygon(Color color, Vertex... vertices) {
         this.color = color;
-        this.points = Arrays.asList(points);
+        this.vertices = Arrays.asList(vertices);
     }
 
-    public Polygon(Color color, List<Point> points) {
+    public Polygon(Color color, List<Vertex> vertices) {
         this.color = color;
-        this.points = points;
+        this.vertices = vertices;
     }
 }
